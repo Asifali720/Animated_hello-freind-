@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap">
+    <title>Animated</title>
+    <style>
+        body {
+            text-align: center;
+            font-size: 60px;
+            background: #f2defa;
+            font-style: italic;
+        }
+        .letter{
+            display: inline-block;
+            color: #999;
+            font-family: 'Heebo', sans-serif;
+            cursor: pointer;
+            transition: all 250ms ease-in-out;
+        }
+        .letter.active{
+            transform: scale(1.5) rotate(20deg);
+            /* cursor: pointer; */
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello freinds!</h1>
+
+
+    <script>
+        const main = document.querySelector('h1')
+        const text = main.innerHTML.split('')
+        let html = ''
+
+        text.forEach(text => {
+            classes = ' '
+            if (text !== ' ') {
+                classes = 'letter js-letter'
+            }
+            html = html + `<span class='${classes}'>${text}</span>`
+        })
+        main.innerHTML = html
+        const jsLetter = document.querySelectorAll('.js-letter')
+        //   console.log(jsLetter)
+        jsLetter.forEach(node => {
+            node.addEventListener("mouseover", function (event) {
+                this.classList.add('active')
+            })
+            node.addEventListener("mouseout", function (event) {
+                this.classList.remove('active')
+            })
+        })
+    </script>
+</body>
+
+</html>
